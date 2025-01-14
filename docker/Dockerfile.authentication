@@ -3,6 +3,7 @@ FROM node:20-alpine
 WORKDIR /api
 
 COPY authentication-service/package*.json .
+COPY authentication-service/tsconfig.json .
 
 RUN npm install
 
