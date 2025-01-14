@@ -1,0 +1,13 @@
+FROM node:20-alpine 
+
+WORKDIR /api
+
+COPY authentication-service/package*.json .
+
+RUN npm install
+
+COPY authentication-service/* .
+
+EXPOSE 8001
+
+CMD ["npm", "start"]
