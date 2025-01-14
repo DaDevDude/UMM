@@ -7,7 +7,7 @@ COPY authentication-service/package*.json .
 RUN npm install\
     && npm install typescript -g
 
-COPY authentication-service/* .
+COPY /authentication-service .
 
 EXPOSE 8001
 
