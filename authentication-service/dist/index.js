@@ -21,12 +21,12 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = 8001;
 app.use((0, cors_1.default)({
-    origin: "https://main.d2dwjnixvn5b5o.amplifyapp.com",
-    methods: ["GET", "POST", "PATCH", "DELETE"],
+    origin: "http://localhost:5173", // replace with frontend route
+    methods: ["POST"],
 }));
 app.use(express_1.default.json());
 // @ts-ignore
-app.post("/new", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/auth/new", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { empId } = req.body;
     const isPresent = yield schema_1.UserModel.findOne({ empId });
     if (isPresent) {
@@ -41,7 +41,7 @@ app.post("/new", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.json({ message: "user created successfully" });
 }));
 // @ts-ignore
-app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/auth/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { empId, password } = req.body;
     const user = yield schema_1.UserModel.findOne({ empId });
     if (!user) {

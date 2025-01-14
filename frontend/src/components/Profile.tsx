@@ -13,9 +13,7 @@ export default function Profile() {
 
   useEffect(() => {
     axios
-      .get(
-        `http://ec2-43-204-221-94.ap-south-1.compute.amazonaws.com:8080/user/${location.state?.empId}`
-      )
+      .get(`http://localhost:8002/user/${location.state?.empId}`)
       .then((response) => {
         setName(response.data.user.name);
         setDesignation(response.data.user.designation);
@@ -36,14 +34,11 @@ export default function Profile() {
 
     console.log("Calling Handle User=====================================");
     try {
-      await axios.patch(
-        `http://ec2-43-204-221-94.ap-south-1.compute.amazonaws.com:8080/user/${empId}`,
-        {
-          name,
-          designation,
-          role,
-        }
-      );
+      await axios.patch(`http://localhost:8002/user/${empId}`, {
+        name,
+        designation,
+        role,
+      });
       console.log("Updated");
       return navigate("/home");
     } catch (e) {

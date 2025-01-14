@@ -13,17 +13,14 @@ export default function SignUp() {
   async function handleFormSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      await axios.post(
-        "http://ec2-43-204-221-94.ap-south-1.compute.amazonaws.com:8080/user/new",
-        {
-          empId,
-          name,
-          designation,
-          password,
-          role: "Intern",
-          productManagerId: pmId,
-        }
-      );
+      await axios.post("http://localhost:8001/auth/new", {
+        empId,
+        name,
+        designation,
+        password,
+        role: "Intern",
+        productManagerId: pmId,
+      });
       return navigate("/signin");
     } catch (e) {
       if (e instanceof AxiosError) {

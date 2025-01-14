@@ -11,7 +11,7 @@ const PORT = 8001;
 
 app.use(
   cors({
-    origin: "https://main.d2dwjnixvn5b5o.amplifyapp.com", // replace with frontend route
+    origin: "http://localhost:5173", // replace with frontend route
     methods: ["POST"],
   })
 );
